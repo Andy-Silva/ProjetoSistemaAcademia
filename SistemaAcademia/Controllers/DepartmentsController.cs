@@ -22,7 +22,7 @@ namespace SistemaAcademia.Controllers
         // GET: Departments
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Department.ToListAsync());
+            return View(await _context.Departamento.ToListAsync());
         }
 
         // GET: Departments/Details/5
@@ -33,7 +33,7 @@ namespace SistemaAcademia.Controllers
                 return NotFound();
             }
 
-            var department = await _context.Department
+            var department = await _context.Departamento
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (department == null)
             {
@@ -54,7 +54,7 @@ namespace SistemaAcademia.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name")] Department department)
+        public async Task<IActionResult> Create([Bind("Id,Name")] Departamento department)
         {
             if (ModelState.IsValid)
             {
@@ -73,7 +73,7 @@ namespace SistemaAcademia.Controllers
                 return NotFound();
             }
 
-            var department = await _context.Department.FindAsync(id);
+            var department = await _context.Departamento.FindAsync(id);
             if (department == null)
             {
                 return NotFound();
@@ -86,7 +86,7 @@ namespace SistemaAcademia.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Department department)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Departamento department)
         {
             if (id != department.Id)
             {
@@ -124,7 +124,7 @@ namespace SistemaAcademia.Controllers
                 return NotFound();
             }
 
-            var department = await _context.Department
+            var department = await _context.Departamento
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (department == null)
             {
@@ -139,15 +139,15 @@ namespace SistemaAcademia.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var department = await _context.Department.FindAsync(id);
-            _context.Department.Remove(department);
+            var department = await _context.Departamento.FindAsync(id);
+            _context.Departamento.Remove(department);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool DepartmentExists(int id)
         {
-            return _context.Department.Any(e => e.Id == id);
+            return _context.Departamento.Any(e => e.Id == id);
         }
     }
 }

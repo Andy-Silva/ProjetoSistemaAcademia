@@ -9,11 +9,16 @@ namespace SistemaAcademia.Data
 {
     public class SistemaAcademiaContext : DbContext
     {
-        public SistemaAcademiaContext (DbContextOptions<SistemaAcademiaContext> options)
+        public SistemaAcademiaContext(DbContextOptions<SistemaAcademiaContext> options)
             : base(options)
         {
         }
 
-        public DbSet<SistemaAcademia.Models.Department> Department { get; set; }
+        public DbSet<Departamento> Departamento { get; set; }
+
+        public DbSet<Aluno> Aluno { get; set; }
+        public DbSet<Professor> Professor { get; set; }
+        public DbSet<Ficha> Ficha { get; set; }
+    
     }
 }
