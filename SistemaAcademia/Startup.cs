@@ -37,8 +37,9 @@ namespace SistemaAcademia
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<SistemaAcademiaContext>(options =>
-                    options.UseMySql(Configuration.GetConnectionString("SistemaAcademiaContext"), 
+                    options.UseMySql(Configuration.GetConnectionString("SistemaAcademiaContext"),
                     builder => builder.MigrationsAssembly("SistemaAcademia")));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

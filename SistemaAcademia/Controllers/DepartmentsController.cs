@@ -54,15 +54,15 @@ namespace SistemaAcademia.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name")] Departamento department)
+        public async Task<IActionResult> Create([Bind("Id,Name")] Departamento departamento)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(department);
+                _context.Add(departamento);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(department);
+            return View(departamento);
         }
 
         // GET: Departments/Edit/5
@@ -73,12 +73,12 @@ namespace SistemaAcademia.Controllers
                 return NotFound();
             }
 
-            var department = await _context.Departamento.FindAsync(id);
-            if (department == null)
+            var departamento = await _context.Departamento.FindAsync(id);
+            if (departamento == null)
             {
                 return NotFound();
             }
-            return View(department);
+            return View(departamento);
         }
 
         // POST: Departments/Edit/5
@@ -86,9 +86,9 @@ namespace SistemaAcademia.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Departamento department)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Departamento departamento)
         {
-            if (id != department.Id)
+            if (id != departamento.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace SistemaAcademia.Controllers
             {
                 try
                 {
-                    _context.Update(department);
+                    _context.Update(departamento);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DepartmentExists(department.Id))
+                    if (!DepartmentExists(departamento.Id))
                     {
                         return NotFound();
                     }
@@ -113,7 +113,7 @@ namespace SistemaAcademia.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(department);
+            return View(departamento);
         }
 
         // GET: Departments/Delete/5
@@ -124,14 +124,14 @@ namespace SistemaAcademia.Controllers
                 return NotFound();
             }
 
-            var department = await _context.Departamento
+            var departamento = await _context.Departamento
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (department == null)
+            if (departamento == null)
             {
                 return NotFound();
             }
 
-            return View(department);
+            return View(departamento);
         }
 
         // POST: Departments/Delete/5
@@ -139,8 +139,8 @@ namespace SistemaAcademia.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var department = await _context.Departamento.FindAsync(id);
-            _context.Departamento.Remove(department);
+            var departamento = await _context.Departamento.FindAsync(id);
+            _context.Departamento.Remove(departamento);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
